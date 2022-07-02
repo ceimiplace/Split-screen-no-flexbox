@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Roboto";
+
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+
+            margin: 0;
+        }
+
+        .play {
+            background-image: url("https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80");
+            top: 0;
+            left: 0;
+
+        }
+
+        .xbox {
+            background-image: url("https://images.unsplash.com/photo-1631896928983-2c94ea6f97e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80");
+            right: 0;
+            top: 0;
+
+
+        }
+
+        .background {
+            width: 50%;
+            height: 100%;
+            background-position: center;
+            position: absolute;
+            background-size: cover;
+            transition: width 2s ease;
+        }
+
+
+
+        p {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.753);
+            z-index: 2;
+            font-size: 40px;
+            border: 2px solid white;
+            padding: 10px;
+        }
+
+        .first {
+            left: 25%;
+            top: 60%;
+
+        }
+
+        .last {
+            right: 25%;
+            top: 60%;
+
+        }
+
+        p:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="first">Buy now</p>
+    <div class="background play"></div>
+    <div class="background xbox"></div>
+    <p class="last">Buy now</p>
+
+</body>
+<script>
+    let play = document.querySelector(".play")
+    let xbox = document.querySelector(".xbox");
+    let first = document.querySelector(".first");
+    let last = document.querySelector(".last")
+    let leftHalf = [play, first];
+    let rightHalf = [xbox, last]
+    function normal() {
+        play.style.width = "50%";
+        xbox.style.width = "50%";
+    }
+    leftHalf.forEach(element => {
+        element.addEventListener("mouseover", () => {
+            play.style.width = "60%";
+            xbox.style.width = "40%"
+        });
+        element.addEventListener("mouseout", () => {
+            normal();
+        })
+    })
+
+    rightHalf.forEach(element => {
+        element.addEventListener("mouseout", () => {
+            normal();
+        })
+        element.addEventListener("mouseover", () => {
+            xbox.style.width = "60%";
+            play.style.width = "40%"
+        })
+    })
+
+
+</script>
+
+</html>
